@@ -1,5 +1,5 @@
-﻿/*
- *(CPE10508, UVA10009) City_Tour.cpp
+/*
+ *City_Tour.cpp
  * Author:Yun Pei Chao 
  */
 #include<iostream>
