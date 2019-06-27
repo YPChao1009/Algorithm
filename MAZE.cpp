@@ -1,3 +1,7 @@
+/*
+ * MAZE.cpp
+ * Author:Yun Pei Chao 
+ */
 #define _CRT_SECURE_NO_DEPRECATE
 #include<stdio.h>
 #include<stdlib.h>
@@ -28,9 +32,9 @@ int main()
 		for (j = 0; j < size; j++)
 		{
 			if (maze[i][j] == ' ')
-				printf("¡¼");
+				printf("â–¡");
 			else
-				printf("¢Â");
+				printf("â…©");
 		}
 		printf("\n");
 
@@ -52,27 +56,27 @@ int main()
 }
 void searchpath(char array[size][size], int x, int y, int step[size*size][2], int *goal, int n)
 {
-	array[x][y] = 's';                                                         //¸ô®|
-	step[n][0] = x;                                                            //¸ô®|®y¼Ð
+	array[x][y] = 's';                                                         //è·¯å¾‘
+	step[n][0] = x;                                                            //è·¯å¾‘åº§æ¨™
 	step[n][1] = y;
-	n += 1;                                                                    //¨B¼Æ
+	n += 1;                                                                    //æ­¥æ•¸
 
 	if (x < size&&y < size)
 	{
 		
-		if (array[x - 1][y] == ' ' &&x != 0)                                   //¦V¥ª
+		if (array[x - 1][y] == ' ' &&x != 0)                                   //å‘å·¦
 			searchpath(array, x - 1, y, step, goal, n);
-		if (array[x + 1][y] == ' '&& x != size - 1)                            //¦V¥k
+		if (array[x + 1][y] == ' '&& x != size - 1)                            //å‘å³
 			searchpath(array, x + 1, y, step, goal, n);
-		if (array[x][y - 1] == ' '&&y != 0)                                    //¦V¤W
+		if (array[x][y - 1] == ' '&&y != 0)                                    //å‘ä¸Š
 			searchpath(array, x, y - 1, step, goal, n);
-		if (array[x][y + 1] == ' ' && y != size - 1)                           //¦V¤U 
+		if (array[x][y + 1] == ' ' && y != size - 1)                           //å‘ä¸‹ 
 			searchpath(array, x, y + 1, step, goal, n);
 
 	}
 	if (x == size - 1 && y == size - 1)
 	{
-		*goal += 1;                                                            //¸ô®|¼Æ
+		*goal += 1;                                                            //è·¯å¾‘æ•¸
 		printpath(array, step, goal, n);
 
 	}
@@ -87,7 +91,7 @@ void printpath(char array[size][size], int step[size*size][2], int *goal, int n)
 	printf("Path %d:", *goal);
 	for (i = 0; i < n; i++)
 	{
-		printf("(%d,%d)", step[i][0], step[i][1]);                               //¦L¥X¨«¹L®y¼Ð      
+		printf("(%d,%d)", step[i][0], step[i][1]);                               //å°å‡ºèµ°éŽåº§æ¨™      
 		if (step[i][0] != 7 || step[i][1] != 7)
 			printf("->");
 	}
@@ -95,14 +99,14 @@ void printpath(char array[size][size], int step[size*size][2], int *goal, int n)
 	for (i = 0; i < size; i++)
 	{
 
-		for (j = 0; j < size; j++)                                                //¦L¥X¸ô®|¦a¹Ï
+		for (j = 0; j < size; j++)                                                //å°å‡ºè·¯å¾‘åœ°åœ–
 		{
 			if (array[i][j] == 's')
-				printf("¡½");
+				printf("â– ");
 			else if (array[i][j] == ' ')
-				printf("¡¼");
+				printf("â–¡");
 			else
-				printf("¢Â");
+				printf("â…©");
 		}
 		printf("\n");
 	}
